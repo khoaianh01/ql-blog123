@@ -6,7 +6,7 @@
                 <img src="/img/core.png" alt="">
             </div>
             <h2 class="form-title">Đăng nhập vào Core</h2>
-            <form action="/admin/login" method="POST">
+            <form action="/user/login" method="POST">
                 <div class="form-group">
                     <div class="form-group__email form-group-item">
                         <div class="el-input-group__icon"><i class="fas fa-user"></i></div>
@@ -30,8 +30,9 @@
                 <button class="form-group-button" type="submit">Đăng nhập</button>
             </form>
             <div class="bottom-login">
-                <a href="" class="bottom-login-item">Quên mật khẩu</a>
-                <a href="">Tạo tài khoản</a>
+                
+                <a href="/user/logout" class="bottom-login-item">Đăng xuất</a>
+                <a href="/user/register">Tạo tài khoản</a>
             </div>
             <div class="dang-nhap-bang">
 
@@ -41,12 +42,12 @@
             <div class="social-login">
                 <ul class="list-unstyled">
                     <button type="button" class="el-button el-button-fb">
-                        <a href="/admin/auth/fb"> <i class="fab fa-facebook"></i>
+                        <a href="/user/auth/fb"> <i class="fab fa-facebook"></i>
                             <span>Facebook</span></a>
 
                     </button>
                     <button type="button" class=" el-button el-button-google">
-                        <a href="/admin/auth/google">
+                        <a href="/user/auth/google">
                             <i class="fab fa-google"></i>
                             <span>Google</span></a>
 

@@ -31,7 +31,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 // function main(){
-//   sequelize.sync({force: true})
+//   sequelize.sync({force: true});
 // }
 // main();
 //

@@ -8,13 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
-        type: Sequelize.STRING
-      },
       email: {
         type: Sequelize.STRING
       },
       role: {
+        type: Sequelize.STRING,
+        defaultValue:'user'
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      salt: {
+        type: Sequelize.STRING
+      },
+      googleId: {
         type: Sequelize.STRING
       },
       createdAt: {

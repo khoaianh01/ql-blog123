@@ -1,0 +1,85 @@
+<% layout('layouts/blogs')%>
+   <div class="main">
+      <div class="grid grid__row">
+         <div class="container">
+
+            <% for(let i=0;i<=blogPage.length-1;i++) {%>
+
+               <ul class="post-list">
+                  <li class="post-item-title"><a class="post-link-title" href="/home/<%= blogPage[i].id %>">
+                        <%= blogPage[i].title %>
+                     </a></li>
+                  <li class="post-item-des"><a class="post-link-des" href="/home/<%= blogPage[i].id %>">
+                        <%= blogPage[i].des %>
+                     </a></li>
+                  <li class="post-item-btn"><a class="post-link-btn" href="">tiếp tục đọc </a></li>
+                  <li class="post-item-note">
+                     <ul class="note-list">
+                        <li class="item-node item-author"><a href="/home/<%= blogPage[i].id %>"><i class="far fa-user"
+                                 style="padding-right: 5px;"></i>IT nghèo</a></li>
+                        <li class="item-node item-theme"><a href="/home/<%= blogPage[i].id %>"><i class="far fa-folder"
+                                 style="padding-right: 5px;"></i>chuyện coding</a></li>
+                        <li class="item-node item-comment"><a href="/home/<%= blogPage[i].id %>"><i
+                                 class="fas fa-comments" style="padding-right: 5px;"></i>1 bình luận</a></li>
+                        <li class="item-node item-time"><a href="/home/<%= blogPage[i].id %>"><i class="fas fa-clock">
+                          
+                              </i></a></li>
+                     </ul>
+                  </li>
+               </ul>
+               <% }%>
+
+               <%if(idPage<PAGE_SIZE){%>
+                  <p class="older-post"><a href="/home/?page=<%=idPage%>">bài cũ hơn</a></p>
+                  <%}%>
+
+
+      </div>
+      <div class="sidebar">
+         <aside id="group-fb">
+
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous"
+               src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=367942391625870&autoLogAppEvents=1"
+               nonce="iv0OOf4n"></script>
+            <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100072299271073"
+               data-width="380px" data-hide-cover="false" data-show-facepile="false"></div>
+         </aside>
+         <div class="send-email">
+            <form action="/send/flow" method="POST">
+               <input type="text" name="email" id="" placeholder="nhập email của bạn" class="email"></br>
+               <button>theo dõi blog</button>
+            </form>
+         </div>
+         <aside class="many-viewers">
+            <h2 class="title-many-viewers">nhiều người xem</h2>
+            <ul class="list-many-viewers">
+               <% for(let i=0; i<7;i++){%>
+                  <li class="item-many-viewers"><a href="/home/<%= views[i].id %>" class="link-many-viewers">
+                        <%= views[i].title %>
+                     </a></li>
+                  <%}%>
+            </ul>
+         </aside>
+         <aside class="theme">
+            <h2 class="title-theme">chủ đề</h2>
+            <ul class="list-theme">
+               <% for(let i = 0; i < topics.length;i++){%>
+                  <li class="item-theme">
+                     <a href="/home/post/<%= topics[i].id%>" class="link-theme" style="padding-bottom: 15px;">
+                        <%= topics[i].title %>
+                     </a>
+                     <ul class="list-item-theme">
+                        <% for(let j = 0; j < topics[i].Blogs.length;j++){%>
+                           <li class="item-item-theme"><a href="/home/<%= topics[i].Blogs[j].id%>" class="link-item-theme">
+                                 <%= topics[i].Blogs[j].title %>
+                              </a></li>
+                           <%}%>
+                     </ul>
+                  </li>
+                  <%}%>
+            </ul>
+         </aside>
+      </div>
+   </div>
+</div>
