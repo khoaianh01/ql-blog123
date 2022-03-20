@@ -3,27 +3,24 @@
 
 
 
-    <form action="/admin/edit/editpost/<%=topicid%>/post/<%=blog._id%>?_method=PUT" method="POST"
-        enctype="multipart/form-data">
+    <form action="/admin/edit/editpost/<%=topicid%>/post/<%=blog.id%>?_method=PUT" method="POST"
+       >
         <input type="text" name="title" placeholder="tiêu đề bài viết" style="width:400px;height:100px"
             value="<%= blog.title %>">
         <br />
         <textarea name="des" id="des" rows="10" cols="80"><%= blog.des %></textarea><br>
         <textarea name="content" id="content" rows="10" cols="80" class="content"><%= blog.content %>
     </textarea> <br />
-        <input type="file" name='avata' id="avata" multiple><br>
+        <!-- <input type="file" name='avata' id="avata" multiple><br> -->
 
-        <select name="topic[title]">
-            <option value="<%= blog.blogTopic %>">
-                <%= blog.blogTopic %>
-            </option>
+        <select name="topictitle">
+            
             <% for(let topic of topics) {%>
-                <% if(topic.title !==blog.blogTopic){%>
-                    <option value="<%= topic.title%>">
+                    <option value="<%= topic.title %>">
                         <%= topic.title %>
                     </option>
                     <%}%>
-                        <%}%>
+                      
         </select>
         <input type="submit" name="" id="">
 

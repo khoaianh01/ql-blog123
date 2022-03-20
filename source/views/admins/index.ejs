@@ -2,20 +2,20 @@
 
    <div>
       <ul class="list-theme">
-         <% for(let topic of topics){%>
+         <% for(let i = 0; i < topics.length;i++){%>
             <li class="item-theme">
-               <a href="/home/post/<%= topic._id%>" class="link-theme" style="padding-bottom: 15px;">
-                  <%= topic.title %>
-               </a> <a href="/admin/edit/edittopic/<%= topic._id%>" class="link-theme"
+               <a href="/home/post/<%= topics[i].id%>" class="link-theme" style="padding-bottom: 15px;">
+                  <%= topics[i].title %>
+               </a> <a href="/admin/edit/edittopic/<%= topics[i].id%>" class="link-theme"
                   style="color:rgb(179, 255, 0)">edit</a>
 
                <ul class="list-item-theme">
-                  <% for(let blog of topic.blogs){%>
-                     <li class="item-item-theme"><a href="/home/<%= blog._id%>" class="link-item-theme">
-                           <%= blog.title %>
-                        </a> <a href="/admin/edit/editpost/<%= topic._id %>/post/<%= blog._id %>"
+                  <% for(let j = 0; j < topics[i].Blogs.length;j++){%>
+                     <li class="item-item-theme"><a href="/home/<%= topics[i].Blogs[j].id%>" class="link-item-theme">
+                        <%= topics[i].Blogs[j].title %>
+                     </a> <a href="/admin/edit/editpost/<%= topics[i].id %>/post/<%=topics[i].Blogs[j].id %>"
                            style="color:rgb(179, 255, 0)">edit</a> </li>
-                     <form action="/admin/edit/deletepost/<%= topic._id %>/post/<%= blog._id %>?_method=DELETE"
+                     <form action="/admin/edit/deletepost/<%= topics[i].id %>/post/<%= topics[i].Blogs[j].id %>?_method=DELETE"
                         method="POST"><button>delete</button></form>
                      <%}%>
                </ul>

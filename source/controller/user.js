@@ -8,10 +8,9 @@ module.exports.getFormLogin = async (req,res)=>{
    
     res.render("users/login");
 }
-module.exports.postFormLogin = async (req,res)=>{
-        
-        res.redirect("/home");
-    
+module.exports.postFormLogin = async (req,res,next)=>{
+  console.log('abc')
+  res.redirect("/home");
 }
 module.exports.getFormRegister = async (req,res)=>{
     res.render("users/register");
@@ -38,7 +37,6 @@ module.exports.postFormRegister = async (req,res,next)=>{
           }
           
           req.logIn(user, function(err) {
-            req.user = user.id;
             if (err) { return next(err); }
             return res.redirect('/home');
           })

@@ -1,14 +1,14 @@
 <% layout('layouts/adminblog')%>
 
     <h1>add blog</h1>
-    <form action="/admin/blog" method="POST" enctype="multipart/form-data">
+    <form action="/admin/addblog" method="POST">
         <input type="text" name="title" placeholder="tiêu đề bài viết" style="width:400px;height:100px">
         <br />
-        <textarea name="des" id="" rows="10" cols="80"></textarea><br>
-        <textarea name="content" id="content" rows="10" cols="80"></textarea> <br />
+        <input name="des" id="" rows="10" cols="80"></input><br>
+        <input name="content" id="content" rows="10" cols="80"></input> <br />
 
-        <input type="file" name='avata' id="avata"><br>
-        <select name="topic[title]">
+        <!-- <input type="file" name='avata' id="avata"><br> -->
+        <select name="topictitle">
             <option value="">chọn chủ đề</option>
             <% for(let topic of topics) {%>
                 <option value="<%= topic.title%>">

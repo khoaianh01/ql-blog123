@@ -11,14 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
     }
   }
   Session.init({
     sid: DataTypes.STRING,
-    
-  expires: DataTypes.DATE,
-  data: DataTypes.TEXT,
+    expires: DataTypes.DATE,
+    data: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Session',

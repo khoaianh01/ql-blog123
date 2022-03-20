@@ -31,12 +31,6 @@ module.exports.renderHome = async (req, res, next) => {
     });
 
 }
-module.exports.getCreatBlog = async (req, res, next) => {
-
-  res.render('blogs/create',)
-  
-
-}
 module.exports.renderBlogTopic = async (req, res) => {
  
   let idPage = req.query.page || 1;
@@ -65,5 +59,30 @@ module.exports.renderBlogTopic = async (req, res) => {
     views,
     idPage,
     PAGE_SIZE
+  });
+}
+module.exports.showBlog = async (req, res)=>{
+  const { id } = req.params;
+  const post = await db.Blog.findOne({where: {id}});
+  const blogs = await db.Blog.findAll({});
+  const topics = await db.Topic.findAll({include:{model:db.Blog}})
+  post.view++;
+  await post.save();
+  const views = await db.Blog.findAll({
+    order:[['view','DESC']]
+  })
+  let qtyBlog = blogs.length;
+  let relatedPosts = [];
+  for (let i = 0; i < 3; i++) {
+    let vt = Math.floor(Math.random() * qtyBlog);
+    relatedPosts.push(blogs[vt]);
+  }
+  
+  res.render("blogs/show", {
+    post,
+    blogs,
+    topics,
+    views,
+    relatedPosts
   });
 }

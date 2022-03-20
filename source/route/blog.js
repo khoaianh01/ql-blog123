@@ -1,12 +1,14 @@
 const express = require("express");
 const blog_router = express.Router();
 const Blog = require("../controller/blog");
-const { isAdmin, isLoggedIn } = require("../middleware");
+const catchAsync = require("../utils/catchAsync");
+
 blog_router
     .route('/')
-    .get(Blog.renderHome);
+    .get(catchAsync(Blog.renderHome));
 blog_router
     .route('/post/:id')
-    .get(Blog.renderBlogTopic)
-
+    .get(catchAsync(Blog.renderBlogTopic))
+blog_router.route('/:id')
+    .get(catchAsync(Blog.showBlog));
 module.exports = blog_router;
